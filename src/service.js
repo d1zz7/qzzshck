@@ -1,3 +1,4 @@
+
 const sendMessage = (type = null, payload = null) => {
   chrome.runtime.sendMessage(
     {

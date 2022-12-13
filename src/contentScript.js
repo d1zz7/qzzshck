@@ -7,10 +7,5 @@ window.onmousedown = () => {
 }
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.type === 'COUNT') {
-    console.log(`Current count is ${request.payload.count}`);
-  }
 
-  sendResponse({});
-  return true;
 });
