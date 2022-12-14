@@ -5,7 +5,7 @@ const data = require("./data");
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   switch (request.type) {
     case messageTypes.MOUSE_CLICK:
-      sendResponse(data);
+        sendResponse(data);
       break;
     default:
       break;
