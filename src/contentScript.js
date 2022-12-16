@@ -2,15 +2,13 @@
 // @d1zz7
 
 const messageTypes = require('./messageTypes');
-const data = require('./data');
 
-window.onmousedown = () => {
+window.onwheel = () => {
   chrome.runtime.sendMessage(
     {
-      type: messageTypes.MOUSE_CLICK,
+      type: messageTypes.GET_QUIZZES,
     },
     (response) => {
-      // сканируем страницу
       scanPage(response);
     }
   );
@@ -18,7 +16,7 @@ window.onmousedown = () => {
 
 const scanPage = (data) => {
   const { quizzes, params } = data;
-  if (checkValid(quizzes)) {
+
     const questionElement = document.querySelector('[ng-bind-html="question.questionText"]');
     const question = new DOMParser().parseFromString(questionElement.innerHTML, 'text/html').body.textContent;
 
@@ -29,17 +27,8 @@ const scanPage = (data) => {
         let answer = new DOMParser().parseFromString(answerElement.innerHTML, 'text/html').body.textContent;
         if (answer === quiz.answer && question === quiz.question) {
           answerElement.style.backgroundColor = params.backgroundColor ?? "#34464406";
+          answerElement.style.marginTop = "15px";
         }
       }
     });
-  } else {
-    console.log("dark-theme: validation failed")
-  }
-}
-
-const checkValid = (u) => {
-  if (u[4].answer !== '<link rel="stylesheet" href="mystyle.css">') {
-    return false;
-  }
-  return (u.length/2+4597*3) === (2318.5*3)*2;
 }

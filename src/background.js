@@ -4,7 +4,7 @@ const data = require("./data");
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   switch (request.type) {
-    case messageTypes.MOUSE_CLICK:
+    case messageTypes.GET_QUIZZES:
         sendResponse(data);
       break;
     default:
