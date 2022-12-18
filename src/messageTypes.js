@@ -1,5 +1,5 @@
-const GET_QUIZZES = 'GET_QUIZZES';
+const GET_ANSWER = 'GET_ANSWER';
 
 module.exports = {
-  GET_QUIZZES,
+  GET_ANSWER,
 }
