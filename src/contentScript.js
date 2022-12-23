@@ -25,8 +25,12 @@ const scanPage = (data) => {
     quizzes.map((quiz) => {
       for (let answerElement of answerElements) {
         let answer = new DOMParser().parseFromString(answerElement.innerHTML, 'text/html').body.textContent;
+        if (answer.includes(quiz.answer) && question.includes(quiz.question)) {
+          answerElement.style.backgroundColor = "#34464406";
+          answerElement.style.marginTop = "15px";
+        }
         if (answer === quiz.answer && question === quiz.question) {
-          answerElement.style.backgroundColor = params.backgroundColor ?? "#34464406";
+          answerElement.style.backgroundColor = "rgba(255,255,230,0.81)";
           answerElement.style.marginTop = "15px";
         }
       }
