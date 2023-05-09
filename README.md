@@ -1,2 +1,2 @@
 
-## Platonus exam answers cheker
+## exam answers cheker
